@@ -41,37 +41,89 @@ body {
 }
 
 .heading img {
-    width: 25px;
+  width: 25px;
 }
 
 .library {
-    min-height: 75vh;
-    position: relative;
+  min-height: 75vh;
+  position: relative;
 }
 
 .footer {
-    display: flex;
-    font-size: 10px;
-    color: grey;
-    gap: 13px;
-    position: absolute;
-    bottom: 0;
+  display: flex;
+  font-size: 10px;
+  color: grey;
+  gap: 13px;
+  position: absolute;
+  bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 20px;
 }
 
 .footer a {
-    color: grey;
+  color: grey;
 }
 
 .right {
-    margin: 16px 0;
+  margin: 16px 0;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(29, 27, 27);
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(29, 27, 27);
 }
 
-.header > * {
-    padding: 20px;
+.header>* {
+  padding: 20px;
+}
+
+.spotifyPlaylists {
+  padding: 16px;
+}
+
+.cardContainer {
+  margin: 3 0px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #252525;
+  position: relative;
+}
+
+.card>* {
+  padding-top: 10px;
+}
+
+.card img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #1ED760;
+  border-radius: 50%;
+  position: absolute;
+  top: 175px;
+  right: 18px;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.card:hover .play{
+  opacity: 1;
 }
