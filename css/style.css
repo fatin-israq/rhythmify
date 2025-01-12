@@ -39,6 +39,10 @@
   width: 25px;
 }
 
+.nav {
+  margin: 10px;
+}
+
 .library {
   min-height: 75vh;
   position: relative;
@@ -114,7 +118,7 @@
   background-color: #1ED760;
   border-radius: 50%;
   position: absolute;
-  top: 175px;
+  top: 162px;
   right: 18px;
   padding: 0;
   border: none;
@@ -124,6 +128,8 @@
 
 .card:hover .play {
   opacity: 1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.22);
+  transform: scale(1.05);
 }
 
 .buttons>* {
@@ -157,6 +163,7 @@
 }
 
 .loginbtn:hover {
-  width: 91px;
-  font-size: 17px;
+  /* width: 91px; */
+  /* font-size: 17px; */
+  transform: scale(1.1);
 }
