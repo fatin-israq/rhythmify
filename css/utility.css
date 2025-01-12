@@ -39,3 +39,27 @@
 .p-1 {
     padding: 10px;
 }
+
+/* For WebKit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #222; /* Track color (dark black) */
+  border-radius: 10px; /* Optional: rounded track corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #444; /* Thumb color (dark gray) */
+  border-radius: 10px; /* Optional: rounded thumb corners */
+  border: 3px solid #222; /* Adds padding-like effect with track color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Lighter gray on hover for thumb */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #888; /* Even lighter gray when thumb is active (clicked) */
+}
