@@ -44,7 +44,7 @@
 }
 
 .library {
-  min-height: 75vh;
+  min-height: 79vh;
   position: relative;
 }
 
@@ -83,8 +83,13 @@
   padding: 16px;
 }
 
+.spotifyPlaylists h1 {
+  padding-left: 10px;
+}
+
 .cardContainer {
   margin: 3 0px;
+  padding: 15px 10px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -166,4 +171,61 @@
   /* width: 91px; */
   /* font-size: 17px; */
   transform: scale(1.1);
+}
+
+.right {
+  position: relative;
+}
+
+.playbar {
+  position: fixed;
+  bottom: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 71vw;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.songbuttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.songList {
+  height: 640px;
+  overflow: auto;
+}
+
+.songList ul {
+  padding: 0 12px;
+}
+
+.songList ul li {
+  justify-content: space-between;
+  list-style-type: decimal;
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 0px;
+  border: 1px solid white;
+  margin: 12px 0;
+  padding: 13px;
+  border-radius: 5px;
+}
+
+.songList .info {
+  font-size: 16px;
+  width: 344px;
+}
+
+.playnow {
+  display: flex;
+  align-items: center;
+}
+
+.playnow span {
+  font-size: 14px;
+  width: 70px;
+  justify-content: center;
 }
