@@ -75,7 +75,7 @@
   height: 85px;
 }
 
-.header>* {
+.header > * {
   padding: 20px;
 }
 
@@ -105,7 +105,7 @@
   position: relative;
 }
 
-.card>* {
+.card > * {
   padding-top: 10px;
 }
 
@@ -120,7 +120,7 @@
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: #1ED760;
+  background-color: #1ed760;
   border-radius: 50%;
   position: absolute;
   top: 162px;
@@ -137,7 +137,7 @@
   transform: scale(1.05);
 }
 
-.buttons>* {
+.buttons > * {
   margin: 0 12px;
 }
 
@@ -168,8 +168,6 @@
 }
 
 .loginbtn:hover {
-  /* width: 91px; */
-  /* font-size: 17px; */
   transform: scale(1.1);
 }
 
@@ -180,10 +178,12 @@
 .playbar {
   position: fixed;
   bottom: 30px;
-  background-color: rgb(255, 255, 255);
   width: 71vw;
+  height: 40px;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
+  filter: invert(1);
+  background: rgba(149, 150, 153, 0.301);
 }
 
 .songbuttons {
@@ -228,4 +228,44 @@
   font-size: 14px;
   width: 70px;
   justify-content: center;
+}
+
+.seekbar {
+  height: 1px;
+  width: 98%;
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+  position: absolute;
+  bottom: 12px;
+  margin-top: 4px;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 13px;
+  background-color: black;
+  position: relative;
+  bottom: 7px;
+  left: 0%;
+  transition: left 0.5s;
+}
+
+.songbuttons img {
+  cursor: pointer;
+}
+
+.songinfo {
+  display: block;
+  visibility: visible;
+}
+
+.songinfo, .songtime {
+  color: black;
+  padding: 0 12px;
+}
+
+.abovebar {
+  display: flex;
+  justify-content: space-between;
 }
