@@ -1,10 +1,26 @@
-console.log("Javascript is running");
+console.log("Javascript is running > Successful Dev: 1sraQ");
+let currentSong = new Audio();
+
+function formatTime(seconds) {
+  // Ensure seconds is a whole number
+  seconds = Math.floor(seconds);
+
+  // Calculate minutes and remaining seconds
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  // Format seconds to always show two digits
+  const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+
+  // Return the formatted time
+  return `${minutes}:${formattedSeconds}`;
+}
 
 async function getSongs() {
   // Fetch response from the server
   let a = await fetch("http://127.0.0.1:5500/musics/");
   let response = await a.text();
-  //   console.log(response);
+  // console.log(response);
 
   // Create a temporary div to parse the response as HTML
   let div = document.createElement("div");
@@ -23,16 +39,33 @@ async function getSongs() {
   return songs;
 }
 
+const playMusic = (track, pause=false) => {
+  currentSong.src = "/musics/" + track;
+  if (!pause) {
+    currentSong.play();
+    play.src = "/images/icons/pause.svg";
+  }
+  
+  // Replace content in songinfo
+  document.querySelector(".songinfo").innerHTML =
+    "<strong>" + decodeURI(track) + "</strong>";
+
+  // Replace content in songtime
+  document.querySelector(".songtime").innerHTML = "<span>00:00 / 00:00</span>";
+};
+
 async function main() {
   // Get the list of all the songs
   let songs = await getSongs();
-  console.log(songs);
+  currentSong.src = songs[0]
+  // console.log(songs);
 
+  // Show all the songs in the playlist
   let songUL = document
     .querySelector(".songList")
     .getElementsByTagName("ul")[0];
   for (const song of songs) {
-    console.log(song);
+    // console.log(song);
 
     songUL.innerHTML =
       songUL.innerHTML +
@@ -54,9 +87,36 @@ async function main() {
               </li>`;
   }
 
-  // play the first song
-  let audio = new Audio(songs[0]);
-  // audio.play()
+  // Attach an event listener to each song
+  Array.from(
+    document.querySelector(".songList").getElementsByTagName("li")
+  ).forEach((e) => {
+    e.addEventListener("click", (element) => {
+      // console.log(e.querySelector(".info").firstElementChild.innerHTML);
+      playMusic(e.querySelector(".info").firstElementChild.innerHTML);
+    });
+  });
+
+  // Attach an event listener to play, next and previous (play, next, previous are ids)
+  play.addEventListener("click", () => {
+    if (currentSong.paused) {
+      currentSong.play();
+      play.src = "images/icons/pause.svg";
+    } else {
+      currentSong.pause();
+      play.src = "images/icons/play.svg";
+    }
+  });
+
+  // Listen for timeupdate event
+  currentSong.addEventListener("timeupdate", () => {
+    document.querySelector(".songtime").innerHTML = `${formatTime(currentSong.currentTime)} / ${formatTime(currentSong.duration)}`;
+  });
 }
 
 main();
+
+
+
+// 2:45:20
+// Page is not loading the first song automatically when reloaded
