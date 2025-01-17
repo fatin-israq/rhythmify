@@ -41,7 +41,10 @@ async function getSongs() {
 
 const playMusic = (track, pause=false) => {
   currentSong.src = "/musics/" + track;
-  if (!pause) {
+  if (!pause) { // pause == false
+    currentSong.pause();
+    play.src = "/images/icons/play.svg";
+  } else {      // pause == true
     currentSong.play();
     play.src = "/images/icons/pause.svg";
   }
@@ -93,9 +96,13 @@ async function main() {
   ).forEach((e) => {
     e.addEventListener("click", (element) => {
       // console.log(e.querySelector(".info").firstElementChild.innerHTML);
-      playMusic(e.querySelector(".info").firstElementChild.innerHTML);
+      playMusic(e.querySelector(".info").firstElementChild.innerHTML, true);
     });
   });
+
+  if (songs.length > 0) {
+    playMusic(songs[0]);
+  }
 
   // Attach an event listener to play, next and previous (play, next, previous are ids)
   play.addEventListener("click", () => {
@@ -119,4 +126,4 @@ main();
 
 
 // 2:45:20
-// Page is not loading the first song automatically when reloaded
+// Page not loading the first song resolved. 
