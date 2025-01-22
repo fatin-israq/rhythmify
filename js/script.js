@@ -10,7 +10,8 @@ function formatTime(seconds) {
   const remainingSeconds = seconds % 60;
 
   // Format seconds to always show two digits
-  const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+  const formattedSeconds =
+    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
 
   // Return the formatted time
   return `${minutes}:${formattedSeconds}`;
@@ -39,16 +40,18 @@ async function getSongs() {
   return songs;
 }
 
-const playMusic = (track, pause=false) => {
+const playMusic = (track, pause = false) => {
   currentSong.src = "/musics/" + track;
-  if (!pause) { // pause == false
+  if (!pause) {
+    // pause == false
     currentSong.pause();
     play.src = "/images/icons/play.svg";
-  } else {      // pause == true
+  } else {
+    // pause == true
     currentSong.play();
     play.src = "/images/icons/pause.svg";
   }
-  
+
   // Replace content in songinfo
   document.querySelector(".songinfo").innerHTML =
     "<strong>" + decodeURI(track) + "</strong>";
@@ -60,7 +63,7 @@ const playMusic = (track, pause=false) => {
 async function main() {
   // Get the list of all the songs
   let songs = await getSongs();
-  currentSong.src = songs[0]
+  currentSong.src = songs[0];
   // console.log(songs);
 
   // Show all the songs in the playlist
@@ -117,13 +120,19 @@ async function main() {
 
   // Listen for timeupdate event
   currentSong.addEventListener("timeupdate", () => {
-    document.querySelector(".songtime").innerHTML = `${formatTime(currentSong.currentTime)} / ${formatTime(currentSong.duration)}`;
+    document.querySelector(".songtime").innerHTML = `${formatTime(
+      currentSong.currentTime
+    )} / ${formatTime(currentSong.duration)}`;
+    document.querySelector(".circle").style.left =
+      (currentSong.currentTime / currentSong.duration) * 100 + "%";
+  });
+
+  // Add an event listener to seekbar
+  document.querySelector(".seekbar").addEventListener("click", (e) => {
+    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+    currentSong.currentTime = (currentSong.duration * percent) / 100;
   });
 }
 
 main();
-
-
-
-// 2:45:20
-// Page not loading the first song resolved. 
