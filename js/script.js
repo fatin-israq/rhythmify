@@ -141,7 +141,7 @@ async function main() {
 
   // Add an event listener for closing hamburger
   document.querySelector(".close").addEventListener("click", () => {
-    document.querySelector(".left").style.left = -100 + "%";
+    document.querySelector(".left").style.left = -120 + "%";
   })
 
 }
