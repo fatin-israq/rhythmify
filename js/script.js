@@ -1,5 +1,6 @@
 console.log("Javascript is running > Successful Dev: 1sraQ");
 let currentSong = new Audio();
+let songs;
 
 function formatTime(seconds) {
   // Ensure seconds is a whole number
@@ -12,6 +13,10 @@ function formatTime(seconds) {
   // Format seconds to always show two digits
   const formattedSeconds =
     remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+  
+  if (isNaN(remainingSeconds) || seconds < 0) {
+    return "0:00"
+  }
 
   // Return the formatted time
   return `${minutes}:${formattedSeconds}`;
@@ -42,7 +47,7 @@ async function getSongs() {
 
 const playMusic = (track, pause = false) => {
   currentSong.src = "/musics/" + track;
-  if (!pause) {
+  if (pause) {
     // pause == false
     currentSong.pause();
     play.src = "/images/icons/play.svg";
@@ -62,7 +67,7 @@ const playMusic = (track, pause = false) => {
 
 async function main() {
   // Get the list of all the songs
-  let songs = await getSongs();
+  songs = await getSongs();
   currentSong.src = songs[0];
   // console.log(songs);
 
@@ -144,6 +149,29 @@ async function main() {
     document.querySelector(".left").style.left = -120 + "%";
   })
 
+  // Add an event listener to previous and next
+  previous.addEventListener("click", () => {
+    // console.log("Previous clicked");
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+    if ((index - 1) >= 0) {
+      playMusic(songs[index -1]);
+    }
+  })
+
+  next.addEventListener("click", () => {
+    // console.log("Next clicked");
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+    if ((index + 1) < songs.length) {
+      playMusic(songs[index + 1]);
+    } else {
+      playMusic(songs[0]);
+    }
+
+  })
+
 }
 
 main();
+
+
+// Still have a problem in playMusic()

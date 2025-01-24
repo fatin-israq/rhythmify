@@ -111,7 +111,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 70vh;
 }
 
@@ -201,7 +201,7 @@
   padding: 12px;
   border-radius: 10px;
   filter: invert(1);
-  background: rgba(149, 150, 153, 0.301);
+  background: rgba(213, 214, 216, 0.95);
 }
 
 .songbuttons {
@@ -239,6 +239,10 @@
 .songList .info {
   font-size: 16px;
   width: 344px;
+}
+
+.info div {
+  word-break: break-all;
 }
 
 .playnow {
@@ -281,6 +285,8 @@
 .songinfo {
   display: block;
   visibility: visible;
+  width: 250px;
+  text-align: center;
 }
 
 .songinfo,
@@ -292,6 +298,11 @@
 .abovebar {
   display: flex;
   justify-content: space-between;
+  margin: 0px 0px;
+}
+
+.close {
+  display: none;
 }
 
 @media (max-width: 1250px) {
@@ -303,14 +314,22 @@
     width: 233px;
     background-color: black;
     width: 360px;
+    padding: 0;
+  }
+
+  .card {
+    min-width: 80vw;
+    border-radius: 12px;
+  }
+
+  .cardContainer {
+    justify-content: center;
+    margin: 0;
   }
 
   .right {
     width: 100vw;
-  }
-
-  .playbar {
-    width: 95vw;
+    margin: 0;
   }
 
   .container {
@@ -320,4 +339,28 @@
   .hamburger {
     display: block;
   }
+
+  .playbar {
+    width: calc(100vw - 55px);
+  }
+
+  .seekbar {
+    width: calc(100vw - 70px);
+  }
+
+  .playbar {
+    height: 115px;
+    margin: 10 0px;
+  }
+
+  .close {
+    display: block;
+  }
+
+  .abovebar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
 }
