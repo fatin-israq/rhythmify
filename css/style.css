@@ -120,21 +120,18 @@
 }
 
 .card {
-  width: 200px;
+  width: 220px;
   padding: 10px;
   border-radius: 5px;
-
   position: relative;
   transition: all 0.5s;
-}
-
-.card > * {
-  padding-top: 10px;
+  
 }
 
 .card img {
   width: 100%;
   object-fit: contain;
+  border-radius: 5px;
 }
 
 .card:hover {
