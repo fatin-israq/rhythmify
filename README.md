@@ -5,7 +5,8 @@ Rhythmify is a modern web application that allows users to stream music seamless
 ## 🌐 Live Demo
 
 Check out the live version of Rhythmify here:  
-🔗 [Rhythmify](https://rhythmify.freewebhostmost.com/)
+🔗 [Rhythmify](https://fatin-israq.github.io/rhythmify/)
+N.B: It might show that this site is dangerous, but ignore the warning. 
 
 ## ✨ Features
 
