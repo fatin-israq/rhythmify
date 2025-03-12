@@ -148,8 +148,8 @@
   background-color: #1ed760;
   border-radius: 50%;
   position: absolute;
-  top: 162px;
-  right: 18px;
+  bottom: 118px;
+  right: 25px;
   padding: 0;
   border: none;
   opacity: var(--a);
@@ -203,8 +203,8 @@
 .playbar {
   position: fixed;
   bottom: 30px;
-  width: 71vw;
-  height: 40px;
+  width: 70vw;
+  height: 6vh;
   padding: 12px;
   border-radius: 10px;
   filter: invert(1);
@@ -317,6 +317,7 @@
   background: #4CAF50;
   border-radius: 5px;
   outline: none;
+  cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
 
@@ -385,6 +386,7 @@
     background-color: black;
     width: 360px;
     padding: 0;
+    height: 100vh;
   }
 
   .card {
@@ -408,11 +410,12 @@
 
   .hamburger {
     display: block;
+    cursor: pointer;
   }
 
   .playbar {
     width: calc(100vw - 55px);
-    height: auto;
+    height: 17vh;
     padding: 15px 12px;
     margin: 0;
     bottom: 15px;
@@ -468,4 +471,46 @@
   }
 }
 
+
+@media (max-width: 500px) {
+  .card {
+    width: auto;
+  }
+
+  .header > * {
+    padding-top: 18px;
+  }
+
+  .nav {
+    padding-top: 10px;
+    padding-left: 18px;
+  }
+
+  .buttons {
+    padding-right: 18px;
+  }
+
+  .cardContainer {
+    max-height: unset;
+    overflow-y: unset;
+    margin-bottom: 20vh;
+  }
+
+  .spotifyPlaylists h1 {
+    padding: 4px;
+  }
+
+  .header {
+    padding: 7px;
+  }
+
+  .library {
+    height: 82vh;
+  }
+
+  .left {
+    position: fixed;
+    top: 0;
+  }
+}
 
