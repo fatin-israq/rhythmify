@@ -93,7 +93,7 @@ const playMusic = (track, pause = false) => {
     play.src = "/images/icons/play.svg";
   } else {
     // pause == true
-    // currentSong.play();
+    currentSong.play();
     play.src = "/images/icons/pause.svg";
   }
 
