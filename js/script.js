@@ -1,4 +1,3 @@
-console.log("Javascript is running > Successful Dev: 1sraQ");
 let currentSong = new Audio();
 let songs;
 let currFolder;
@@ -121,14 +120,14 @@ async function displayAlbums() {
       // console.log(e.href);
       let folder = e.href.split("/").slice(-2)[1];
       if (folder !== "musics") {
-        console.log(folder);
-      // Get the metadata of the folder
-      a = await fetch(`http://127.0.0.1:5500/musics/${folder}/info.json`);
-      response = await a.json();
-      console.log(response)
-      cardContainer.innerHTML =
-        cardContainer.innerHTML +
-        `<div data-folder="${folder}" class="card">
+        // console.log(folder);
+        // Get the metadata of the folder
+        a = await fetch(`http://127.0.0.1:5500/musics/${folder}/info.json`);
+        response = await a.json();
+        // console.log(response);
+        cardContainer.innerHTML =
+          cardContainer.innerHTML +
+          `<div data-folder="${folder}" class="card">
               <div class="play">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -156,6 +155,14 @@ async function displayAlbums() {
             </div>`;
       }
     }
+
+     // Load the playlist whenever card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach((e) => {
+      e.addEventListener("click", async (item) => {
+        songs = await getSongs(`musics/${item.currentTarget.dataset.folder}`);
+        playMusic(songs[0]);
+      });
+    });
   });
 }
 
@@ -235,13 +242,6 @@ async function main() {
     .addEventListener("change", (e) => {
       currentSong.volume = parseInt(e.target.value) / 100;
     });
-
-  // Load the playlist whenever card is clicked
-  Array.from(document.getElementsByClassName("card")).forEach((e) => {
-    e.addEventListener("click", async (item) => {
-      await getSongs(`musics/${item.currentTarget.dataset.folder}`);
-    });
-  });
 }
 
 main();
